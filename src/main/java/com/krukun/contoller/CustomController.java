@@ -1,20 +1,44 @@
 package com.krukun.contoller;
 
-import org.springframework.stereotype.Controller;
+import com.krukun.Service.MenuService;
+import com.krukun.entity.Menu;
+import com.krukun.repository.MenuRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * Created by Eugeniy Krukun on 25.04.2016.
  */
-@Controller
+@RestController
 @RequestMapping("/controller")
-public class CustomController  {
-    @RequestMapping(value = "/get",method = RequestMethod.GET)
+public class CustomController {
+    @Autowired
+    private MenuService service;
+
+    @RequestMapping(value = "/getAll", method = RequestMethod.GET)
     @ResponseBody
-    public String getInfo(ModelMap model){
-        return "Some info";
+    public List<Menu> getInfo() {
+        return service.getAll();
+    }
+
+    @RequestMapping(value = "/get/{id}",method = RequestMethod.GET)
+    @ResponseBody
+    public Menu getOne(@PathVariable("id") long id) {
+        return service.getOne(id);
+    }
+
+    @RequestMapping(value = "/save", method = RequestMethod.POST)
+    @ResponseBody
+    public Menu save(@RequestBody Menu menu) {
+        return service.save(menu);
+    }
+
+    @RequestMapping(value = "/delete{id}", method = RequestMethod.POST)
+    @ResponseBody
+    public void delete(@PathVariable("id") long id) {
+        service.delete(id);
     }
 }

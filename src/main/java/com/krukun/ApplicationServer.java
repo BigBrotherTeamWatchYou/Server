@@ -14,7 +14,7 @@ import javax.servlet.ServletRegistration;
 /**
  * Created by Eugeniy Krukun on 25.04.2016.
  */
-public class JavaServer implements WebApplicationInitializer {
+public class ApplicationServer implements WebApplicationInitializer {
     private static final String DISPATCHER = "dispatcher";
 
     @Override
