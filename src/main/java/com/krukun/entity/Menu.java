@@ -13,6 +13,7 @@ public class Menu {
     @Id
     @GeneratedValue(generator = "increment")
     @GenericGenerator(name = "increment",strategy = "increment")
+    @Column(nullable = false)
     private long id = 1;
     @Column(name = "name",nullable = false,length = 30)
     private String name;

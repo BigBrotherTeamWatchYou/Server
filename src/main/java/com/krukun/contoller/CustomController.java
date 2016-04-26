@@ -27,7 +27,7 @@ public class CustomController {
 
     @RequestMapping(value = "/get/{id}",method = RequestMethod.GET)
     @ResponseBody
-    public Menu getOne(@PathVariable("id") long id) {
+    public Menu getOne(@PathVariable long id) {
         return service.getOne(id);
     }
 
@@ -37,7 +37,7 @@ public class CustomController {
         return service.save(menu);
     }
 
-    @RequestMapping(value = "/delete{id}", method = RequestMethod.POST)
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.POST)
     @ResponseBody
     public void delete(@PathVariable("id") long id) {
         service.delete(id);

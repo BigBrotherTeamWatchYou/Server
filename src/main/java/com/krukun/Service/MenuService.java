@@ -21,7 +21,7 @@ public class MenuService implements MenuServiceInterface {
 
     @Override
     public Menu getOne(long id) {
-        return repository.getOne(id);
+        return repository.findOne(id);
     }
 
     @Override
