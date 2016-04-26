@@ -24,6 +24,7 @@ public class CustomController {
         return service.getAll();
     }
 
+
     @RequestMapping(value = "/get/{id}",method = RequestMethod.GET)
     @ResponseBody
     public Menu getOne(@PathVariable("id") long id) {
